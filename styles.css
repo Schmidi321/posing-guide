@@ -1,0 +1,342 @@
+:root {
+  --bg: #1c1a18;
+  --surface: #26231f;
+  --surface-2: #322e28;
+  --text: #f3ece2;
+  --text-dim: #b8ada0;
+  --accent: #cba25a;
+  --accent-dark: #8f6f37;
+  --border: #3d372f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 76px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  padding: 14px 16px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.shoot-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.shoot-tab {
+  flex: 1;
+  padding: 9px 6px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.shoot-tab.active {
+  background: var(--accent);
+  color: #1c1a18;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+#main {
+  padding: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  z-index: 10;
+}
+
+.nav-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  padding: 8px 2px;
+  border-radius: 10px;
+}
+
+.nav-tab.active {
+  color: var(--accent);
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+/* Plan view */
+.plan-controls {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.plan-controls label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.minutes-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minutes-row input {
+  width: 70px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phase-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.phase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.phase-time {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.phase-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.phase-poses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.phase-pose {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.phase-pose img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  background: #f6f1e9;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.phase-poses strong { color: var(--text); }
+
+/* Random pose view */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+}
+
+.chip.active {
+  background: var(--accent);
+  color: #1c1a18;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.pose-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.pose-illustration {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  background: #f6f1e9;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.pose-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.pose-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+}
+
+.pose-instruction {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+
+.pose-tip {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.btn-primary, .btn-secondary {
+  border-radius: 12px;
+  border: none;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #1c1a18;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-big {
+  width: 100%;
+  margin-top: 16px;
+  padding: 16px;
+  font-size: 1.05rem;
+}
+
+/* Categories view */
+.category-section {
+  margin-bottom: 20px;
+}
+
+.category-section h3 {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.pose-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.pose-item summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pose-item .pose-instruction,
+.pose-item .pose-tip {
+  margin-top: 8px;
+}
+
+/* Checklist view */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.check-item input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}

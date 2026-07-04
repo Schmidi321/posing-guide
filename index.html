@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Posen-Guide</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Posen-Guide</h1>
+    <div class="shoot-tabs">
+      <button class="shoot-tab active" data-shoot="couple">Brautpaar</button>
+      <button class="shoot-tab" data-shoot="family">Familie & Gruppen</button>
+      <button class="shoot-tab" data-shoot="single">Einzelperson</button>
+    </div>
+  </header>
+
+  <main id="main"></main>
+
+  <nav class="bottom-nav">
+    <button class="nav-tab active" data-tab="plan">Ablaufplan</button>
+    <button class="nav-tab" data-tab="random">Zufalls-Pose</button>
+    <button class="nav-tab" data-tab="categories">Kategorien</button>
+    <button class="nav-tab" data-tab="checklist">Checkliste</button>
+  </nav>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
