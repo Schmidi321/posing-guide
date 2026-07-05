@@ -303,15 +303,22 @@ function renderChecklist(main) {
   });
 }
 
-document.querySelectorAll('.shoot-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    state.shootType = btn.dataset.shoot;
-    state.categoryFilter = 'all';
-    state.lastPoseId = null;
-    state.plan = null;
-    render();
+function initShootTabs() {
+  const container = document.getElementById('shoot-tabs');
+  container.innerHTML = SHOOT_TYPES.map((s, i) =>
+    `<button class="shoot-tab ${i === 0 ? 'active' : ''}" data-shoot="${s.key}">${s.label}</button>`
+  ).join('');
+
+  container.querySelectorAll('.shoot-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.shootType = btn.dataset.shoot;
+      state.categoryFilter = 'all';
+      state.lastPoseId = null;
+      state.plan = null;
+      render();
+    });
   });
-});
+}
 
 document.querySelectorAll('.nav-tab').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -320,6 +327,7 @@ document.querySelectorAll('.nav-tab').forEach(btn => {
   });
 });
 
+initShootTabs();
 initSplash();
 initModal();
 render();

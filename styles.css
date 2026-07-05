@@ -39,11 +39,17 @@ body {
 .shoot-tabs {
   display: flex;
   gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.shoot-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .shoot-tab {
-  flex: 1;
-  padding: 9px 6px;
+  flex: 0 0 auto;
+  padding: 9px 12px;
   border-radius: 20px;
   border: 1px solid var(--border);
   background: var(--surface);
