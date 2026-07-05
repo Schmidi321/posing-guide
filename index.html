@@ -4,9 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Posen-Guide</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=1.1.0">
 </head>
 <body>
+  <div id="splash" class="splash">
+    <img id="splash-img" class="splash-img" src="" alt="">
+    <div class="splash-overlay">
+      <h1 class="splash-title">Posen-Guide</h1>
+      <p class="splash-tagline">Nie wieder ratlos beim Posieren – dein Leitfaden für Hochzeits- und Event-Shootings.</p>
+      <button id="splash-start" class="btn-primary btn-big">Los geht's</button>
+      <div class="splash-footer">
+        <span id="app-version"></span>
+        <span class="splash-brand">AppReich</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="pose-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close" aria-label="Schließen">&times;</button>
+      <div class="modal-img-wrap">
+        <img id="modal-img" class="modal-img" src="" alt="">
+      </div>
+      <div class="modal-body">
+        <h2 id="modal-title"></h2>
+        <p id="modal-instruction" class="pose-instruction"></p>
+        <p id="modal-tip" class="pose-tip"></p>
+      </div>
+    </div>
+  </div>
+
   <header class="app-header">
     <h1>Posen-Guide</h1>
     <div class="shoot-tabs">
@@ -25,7 +52,7 @@
     <button class="nav-tab" data-tab="checklist">Checkliste</button>
   </nav>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=1.1.0"></script>
+  <script src="app.js?v=1.1.0"></script>
 </body>
 </html>

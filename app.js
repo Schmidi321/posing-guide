@@ -1,3 +1,5 @@
+const APP_VERSION = '1.1.0';
+
 const state = {
   shootType: 'couple',
   tab: 'plan',
@@ -62,6 +64,66 @@ function poseImg(pose) {
   return `illustrations/${pose.id}.png`;
 }
 
+function poseById(id) {
+  return POSES.find(p => p.id === id);
+}
+
+// ---- Splash screen ----
+function initSplash() {
+  document.getElementById('app-version').textContent = `v${APP_VERSION}`;
+  const heroPoses = POSES.filter(p => p.category !== 'detail');
+  const pick = heroPoses[Math.floor(Math.random() * heroPoses.length)];
+  const img = document.getElementById('splash-img');
+  img.src = poseImg(pick);
+
+  const splash = document.getElementById('splash');
+  const dismiss = () => splash.classList.add('hidden');
+  document.getElementById('splash-start').addEventListener('click', dismiss);
+}
+
+// ---- Pose detail modal (with tap-to-zoom on the image only) ----
+function openPoseModal(pose) {
+  const modal = document.getElementById('pose-modal');
+  const img = document.getElementById('modal-img');
+  img.src = poseImg(pose);
+  img.classList.remove('zoomed');
+  img.style.transformOrigin = 'center center';
+  document.getElementById('modal-title').textContent = pose.title;
+  document.getElementById('modal-instruction').textContent = pose.instruction;
+  document.getElementById('modal-tip').textContent = pose.tip ? `💡 ${pose.tip}` : '';
+  modal.classList.remove('hidden');
+}
+
+function closePoseModal() {
+  document.getElementById('pose-modal').classList.add('hidden');
+  document.getElementById('modal-img').classList.remove('zoomed');
+}
+
+function initModal() {
+  const modal = document.getElementById('pose-modal');
+  const img = document.getElementById('modal-img');
+
+  document.getElementById('modal-close').addEventListener('click', closePoseModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePoseModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePoseModal();
+  });
+
+  img.addEventListener('click', (e) => {
+    if (!img.classList.contains('zoomed')) {
+      const rect = img.getBoundingClientRect();
+      const originX = ((e.clientX - rect.left) / rect.width) * 100;
+      const originY = ((e.clientY - rect.top) / rect.height) * 100;
+      img.style.transformOrigin = `${originX}% ${originY}%`;
+      img.classList.add('zoomed');
+    } else {
+      img.classList.remove('zoomed');
+    }
+  });
+}
+
 function render() {
   document.querySelectorAll('.shoot-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.shoot === state.shootType);
@@ -117,7 +179,7 @@ function renderPlan(main) {
       </div>
       <div class="phase-poses">
         ${phase.poses.map(p => `
-          <div class="phase-pose">
+          <div class="phase-pose" data-pose-id="${p.id}">
             <img src="${poseImg(p)}" alt="" loading="lazy" onerror="this.style.display='none'">
             <div><strong>${p.title}</strong> — ${p.instruction}</div>
           </div>
@@ -127,6 +189,13 @@ function renderPlan(main) {
     timeline.appendChild(block);
   });
   main.appendChild(timeline);
+
+  timeline.querySelectorAll('.phase-pose').forEach(row => {
+    row.addEventListener('click', () => {
+      const pose = poseById(row.dataset.poseId);
+      if (pose) openPoseModal(pose);
+    });
+  });
 }
 
 function renderRandom(main) {
@@ -251,4 +320,6 @@ document.querySelectorAll('.nav-tab').forEach(btn => {
   });
 });
 
+initSplash();
+initModal();
 render();
