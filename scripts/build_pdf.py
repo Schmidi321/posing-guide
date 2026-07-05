@@ -37,7 +37,10 @@ CATEGORY_LABELS = {
     'stehend': 'Stehend', 'gehen': 'Gehen & Bewegung', 'naehe': 'Nähe & Emotion',
     'candid': 'Lachen & Candid', 'kreativ': 'Kreativ', 'aufstellung': 'Aufstellung',
     'grossgruppe': 'Großgruppe', 'kinder': 'Kinder', 'sitzend': 'Sitzend',
-    'detail': 'Details', 'bewegung': 'Bewegung',
+    'detail': 'Details', 'bewegung': 'Bewegung', 'zeremonie': 'Zeremonie',
+    'paare': 'Paare', 'feier': 'Feier',
+    'weitere_stehend': 'Stehend (weitere)', 'weitere_gehen': 'Gehen & Bewegung (weitere)',
+    'weitere_naehe': 'Nähe & Emotion (weitere)', 'weitere_candid': 'Lachen & Candid (weitere)',
 }
 
 # id, title, instruction
@@ -74,6 +77,38 @@ POSES = {
    ('c20', 'Spiegelung', 'Pfütze/Fenster/Spiegel nutzen, Kamera tief halten.'),
    ('c21', 'Weitwinkel mit Umgebung', 'Paar klein im Bild, Location dominiert.'),
    ('c22', 'Requisite', 'Vorhandene Requisite einbauen (Schirm, Rad, Blumen).'),
+   ('c34', 'Unter dem Schleier', 'Schleier über beide Köpfe ziehen, enger Moment darunter.'),
+   ('c35', 'Gegenlicht-Spaziergang', 'Paar läuft ins goldene Gegenlicht.'),
+   ('c36', 'Ringe & Blumenstrauß', 'Nahaufnahme beider Hände mit Ringen neben dem Brautstrauß.'),
+  ],
+  'sitzend': [
+   ('c37', 'Angelehnt sitzend', 'Nebeneinander sitzend, Kopf an der Schulter.'),
+   ('c38', 'Picknick-Moment', 'Beide sitzen entspannt auf einer Decke im Gras.'),
+   ('c39', 'Auf der Treppe zusammen', 'Beide sitzen eng zusammen auf einer Stufe.'),
+  ],
+  'zeremonie': [
+   ('c40', 'Ringtausch', 'Nahaufnahme des Moments, in dem die Ringe übergestreift werden.'),
+   ('c41', 'Der erste Kuss', 'Der Kuss direkt nach dem Jawort, Gäste im Hintergrund.'),
+   ('c42', 'Auszug mit Konfetti', 'Durch ein Spalier jubelnder, konfettiwerfender Gäste gehen.'),
+  ],
+  'weitere_stehend': [
+   ('c23', 'Seite an Seite', 'Beide nebeneinander, Arme umeinander, in die Kamera lächeln.'),
+   ('c24', 'Nasenkuss', 'Nasenspitzen berühren sich spielerisch.'),
+   ('c25', 'Hand aufs Herz', 'Hand auf die Brust der anderen Person legen.'),
+  ],
+  'weitere_gehen': [
+   ('c26', 'Arm in Arm spazieren', 'Arme eingehakt, gemütliches Spaziertempo.'),
+   ('c27', 'Gemeinsam rennen', 'Beide rennen nebeneinander, Hand in Hand, lachend.'),
+  ],
+  'weitere_naehe': [
+   ('c28', 'Nase an Nase', 'Stirn und Nase sanft aneinander, Augen geschlossen.'),
+   ('c29', 'Kopf an der Brust', 'Kopf an die Brust der anderen Person legen.'),
+   ('c30', 'Arme um den Hals', 'Beide Arme um den Nacken der anderen Person legen.'),
+   ('c31', 'Bewundernder Seitenblick', 'Eine Person schaut die andere von der Seite an.'),
+  ],
+  'weitere_candid': [
+   ('c32', 'Erleichtertes Lachen', 'Nach dem Jawort herzlich lachen lassen.'),
+   ('c33', 'Alberner Tanzmoment', 'Ein kurzer improvisierter, alberner Tanzschritt.'),
   ],
  },
  'family': {
@@ -82,21 +117,45 @@ POSES = {
    ('f02', 'Halbkreis um Brautpaar', 'Brautpaar mittig, Familie im Halbkreis, leicht erhöht.'),
    ('f03', 'Kernfamilie', 'Nur Eltern + Brautpaar, eng zusammenstehen.'),
    ('f04', 'Je eine Seite', 'Erst nur Familie Braut, dann nur Familie Bräutigam.'),
+   ('f14', 'Geschwister', 'Nur die Geschwister mit dem Brautpaar, locker zusammenstehen.'),
+   ('f15', 'Trauzeugen mit Brautpaar', 'Trauzeugin und Trauzeuge direkt neben dem Brautpaar.'),
+   ('f16', 'Große Familie gestaffelt', 'Ein Teil sitzt vorne, der Rest steht dahinter.'),
   ],
   'grossgruppe': [
    ('f05', 'Alle Gäste', 'Ganze Gesellschaft auf Stufen/Hügel, klar ansagen.'),
    ('f06', 'Von oben fotografiert', 'Gruppe liegt im Kreis, du fotografierst erhöht.'),
    ('f07', 'Wurf-Moment', 'Konfetti/Hüte werfen lassen, Countdown "3-2-1-Wurf!".'),
+   ('f17', 'Anstoßen mit Sektgläsern', 'Ganze Gruppe hebt gemeinsam die Gläser.'),
+   ('f18', 'Herzform mit Händen', 'Gruppe formt mit erhobenen Händen ein Herz.'),
   ],
   'candid': [
    ('f08', 'Lachen provozieren', '"Winkt eurem schlimmsten Feind zu" – Unsinn sagen.'),
    ('f09', 'Gespräch im Kreis', 'Natürlich reden lassen, unauffällig von der Seite.'),
    ('f10', 'Umarmung spontan', 'Kurze Umarmung, mittendrin auslösen.'),
+   ('f19', 'Umarmung der Mutter', 'Emotionale Umarmung zwischen Brautpaar und Elternteil.'),
+   ('f20', 'Gerührte Tränen', 'Ein Gast wischt sich gerührt eine Träne weg.'),
+   ('f21', 'Anstoßen zu zweit', 'Zwei Gäste stoßen lachend mit den Gläsern an.'),
   ],
   'kinder': [
    ('f11', 'Kinder auf Schultern', 'Huckepack oder auf Schultern tragen.'),
    ('f12', 'Kinder rennen lassen', 'Kurze Strecke zu den Eltern rennen lassen.'),
    ('f13', 'Großeltern mit Enkeln', 'Enkel auf dem Schoß, ruhige Anweisungen.'),
+   ('f22', 'Blumenkinder streuen', 'Kinder streuen Blütenblätter, im Wurf eingefangen.'),
+   ('f23', 'Stolzer Ringträger', 'Kind hält stolz das Ringkissen in die Kamera.'),
+   ('f24', 'Ausgelassener Kindertanz', 'Kinder tanzen frei auf der Tanzfläche.'),
+  ],
+  'paare': [
+   ('f25', 'Eltern tanzen', 'Die Eltern des Brautpaars tanzen romantisch miteinander.'),
+   ('f26', 'Großeltern Arm in Arm', 'Warmes, zufriedenes Lächeln.'),
+   ('f27', 'Albernes Geschwisterpaar', 'Geschwister albern miteinander herum.'),
+   ('f28', 'Trauzeugin und Braut', 'Kopf an Kopf, herzlich lachend.'),
+  ],
+  'feier': [
+   ('f29', 'Eröffnungstanz', 'Brautpaar tanzt den ersten Tanz.'),
+   ('f30', 'Torte anschneiden', 'Hände übereinander auf dem Messer.'),
+   ('f31', 'Brautstrauß-Wurf', 'Braut wirft den Strauß über die Schulter.'),
+   ('f32', 'Spalier der Gäste', 'Gäste bilden ein klatschendes Spalier.'),
+   ('f33', 'Großer Gruppenjubel', 'Ganze Gesellschaft jubelt und springt gemeinsam.'),
   ],
  },
  'single': {
